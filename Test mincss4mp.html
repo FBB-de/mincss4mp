@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html>
+<!-- Copyright ©2021 Frank Bruns-Ballhausen //-->
+<!-- Released under the GPL 2.0 License. //-->
+<!-- Testfile for mincss4mp.css" //-->
+<head>
+<title>Test mincss4mp</title>
+<meta name="author" content="Frank Bruns-Ballhausen" >
+<meta charset="UTF-8">
+<meta name="language" content="de-DE">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="copyright" content="GPL 2.0 License">
+<script typ="text/javascript" src="vue.min.js"></script>
+<script typ="text/javascript" src="helper.js"></script>
+
+<link href="customstyle.css" rel="stylesheet" type="text/css">
+<link rel="shortcut icon" type="image/x-icon" href="../../style/favicon.ico">
+</head>
+<body>
+
+<section id="sectNav">
+<nav class="nav navcustomsty" tabindex="-1">
+	<div class="nav-cont" >
+		<a class="pagename" href="./Test%20mincss4mp.html">Mincss4mp</a>
+		<a href="https://fbb.uber.space" class="back">zu FBB</a>
+		<div class="nav-drop">
+			<a class="nav-drop-btn">Horizontales-Menü</a>
+			<div class="drop">
+			<a href="#H-Nav">Erläuterung</a>
+			<a href="#H-Nav-B">Beispiel Horizontales-Menü</a>
+			</div>
+		</div>
+		<div class="nav-drop">
+			<a href="#Thirt" class="nav-drop-btn">Menü (Dropdown)</a>
+			<div class="drop">
+			<a href="#V-Div">Erläuterung</a>
+			<a href="#V-Div-B">Beispiel Menü</a>
+			</div>
+		</div>
+		<a href="#about" v-on:click="v_msbi=true"><span class="bo bo-radp pad1 pad4-l pad4-r">&#x2139;</span> Info</a>
+	<button class="btn btn-out btn-nav-close">×</button>
+	</div>
+</nav>
+<msb-template :vp_msbi="v_msbi" v-on:closemsb="v_msbi=false"><x class="version"/></msb-template>
+</section>
+
+
+<section class="sect" id="sectMenu" style="position:relative; top:30px">
+	<div class="row">
+		<div class="col c4 pad6-r colcustomsty">
+			<div class="menu menu_customsty" >
+				<a class="drop" v-on:click="v_hideshowmenu('m1')" >Seiten Menü</a>
+				<transition name="smooth">
+				<ul id="m1" class="menu-list smooth" v-show="v_arrs['m1']" v-on:click="v_hidemenu($event)">
+					<li class="drop">
+					<a class="drop" v-on:click="v_hideshowmenu('m2')" >Menüs</a>
+						<transition name="smooth">
+						<ul id="m2" class="menu-list smooth" v-show="v_arrs['m2']" v-on:click="v_hidemenu($event)">
+							<li><a href="#H-Nav">Horizontale Navigation</a></li>
+							<li><a href="#V-Div">Vertikales Menü</a></li>
+							<li><a href="#Foot">Info zum Footer</a></li>
+						</ul>
+						</transition>
+					</li>
+					<li><a href="#Grid">Grid-Abschnitt</a></li>
+					<li><a href="#Formularelemente">Formular-Abschnitt</a></li>
+					<li><a href="#Links_a_Button">Links und Button</a></li>
+					<li><a href="#Farben">Farb-Abschnitt</a></li>
+					<li><a href="#Tabellen">Tabellen-Abschnitt</a></li>
+					<li><a href="#Container">Einfache Container</a></li>
+					<li><a href="#Messageboxen">MeldungsBox-Abschnitt</a></li>
+					<li><a href="#Tabs">Tabs-Abschnitt</a></li>
+					<li><a href="#Acco">Akkordion-Abschnitt</a></li>
+					<li><a href="#Lists">Listen-Abschnitt</a></li>
+					<li><a href="#customsty">Angepasstes Design</a></li>
+				</ul>
+				</transition>
+			</div>
+		</div>
+		<div class="col c8 bo bo-gr bo-rad5 pad8">
+			<div class="" style="font-size:1.2em">
+				<p>Dies ist eine "Testseite" mit der das Konzept von <b class="t-rd-drk">mincss4mp</b> aufgezeigt werden soll.<p>
+				<p>Die Testseite sollte möglichst einfach sein, aber alle angebotenen CSS-Klassen einsetzen, darstellen und dokumentieren. Für das notwendige javascript wird <b class="t-gn-drk">Vue.js</b> verwendet. Aus Gründen der Einfachheit wird weitgehend auf Vue&#x1806;Components verzichtet.</p>
+				<p>Die Klassen von mincss4mp bestehen, bis auf wenige Ausnahmen, nur aus Kürzeln mit Bindestrich (<span class="t-gr">z.B. <b>t&#x1806;gr</b> für Text&#x1806;grau</span>)</p>
+			</div>
+		</div>
+	</div>
+	<hr/>
+</section>
+<section class="sect" id="sectHmenu">
+	<div id="Navigationtest">
+		<h3 class="t-bk-lig"><a name="H-Nav">Horizontale Navigation</a></h3>
+		<div class="row">
+		  <div class="col c100">
+		    <div class="marg8 pad5 bo bo-gr bo-rad5">
+		      <p>Eine horizontale Seitennavigation besteht aus einem nav-Tag und der Klasse <b>nav</b> und einer bestimmten Struktur (siehe&nbsp;Quelltext).
+		        Die eine zusätzliche Klasse <b>nav-bk</b> erzeugt einen schwarzen Hintergrund für die Navigation. Weitere mögliche Farben sind:
+						<ul class="menu-list stripped">
+							<li >Klasse <b>nav-bl</b>= blau</li>
+							<li >Klasse <b>nav-rd</b>= rot</li>
+							<li >Klasse <b>nav-gn</b>= grün</li>
+						</ul>
+		      </p>
+		      <div >Quelltext-Beispiel:
+		        <div class="pre c80p">&lt;nav class="nav" tabindex="-1"&gt;
+		          &nbsp; &lt;div class="nav-cont" &gt;
+		          &nbsp; &lt;a class="pagename" href="#"&gt;HOME&lt;/a&gt;
+		          &nbsp; &lt;a href="https://linkfoo.de/"&gt;Normaler Eintrag&lt;/a&gt;
+		          &nbsp; &lt;div class="nav-drop"&gt;
+		          &nbsp;&nbsp; &lt;a href="#0" class="nav-drop-btn"&gt;Drop-Eintrag&lt;/a&gt;
+		          &nbsp;&nbsp; &lt;div class="drop"&gt;
+		          &nbsp;&nbsp; &nbsp;&nbsp; &lt;a href="#1"&gt;Drop Eintrag 1&lt;/a&gt;
+		          &nbsp;&nbsp; &nbsp;&nbsp; &lt;a href="#2"&gt;Drop Eintrag 2&lt;/a&gt;
+		          &nbsp;&nbsp; &lt;/div&gt;
+		          &nbsp; &lt;/div&gt;
+		          &nbsp; &lt;button class="btn btn-out btn-nav-close"&gt;×&lt;/button&gt;
+		          &nbsp; &lt;/div&gt;
+		          &lt;/nav&gt;</div>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		<div class="row"  >
+		  <div class="col c4 pad3-r" style="min-height:200px">
+		    <h6 class="marg3-b"><a name="H-Nav-B">Beispiel Horizontale Navigation (nav)</a></h6>
+		    <nav class="nav" tabindex="-1">
+		      <div class="nav-cont" >
+		        <a class="pagename-logo logocustomsty" href="">&nbsp;</a>
+		        <a >Normaler Eintrag</a>
+		        <div class="nav-drop">
+		          <a href="#0" class="nav-drop-btn">Drop-Eintrag&nbsp;&nbsp;</a>
+		          <div class="drop">
+		            <a href="#1">Drop Eintrag&nbsp;1</a>
+		            <a href="#2">Drop Eintrag&nbsp;2</a>
+		          </div>
+		        </div>
+		      <button class="btn btn-out btn-nav-close">×</button>
+		      </div>
+		    </nav>
+				<div class="marg5 pad3 bo bo-gr bo-rad5">
+					Diese Navigation verwendet für den »HOME«-Button statt der Klasse <b>pagename</b> die Klassen <b>pagename-logo</b> & <b>logocustomsty</b>,<br/>
+					um ein Logo einzubinden. Die Klassen mit *<i class="t-or"><b>customsty</b></i> werden in der Stylesheet-Datei <a href="#customsty" class="t-bl">customstyle.css</a> definiert.
+				</div>
+		  </div>
+		  <div class="col c4 pad3-r" style="min-height:200px">
+		    <h6><a name="H-Nav-B2">Beispiel Horizontale Navigation (nav nav-bk)</a></h6>
+		    <nav class="nav nav-bk" tabindex="-1">
+		      <div class="nav-cont" >
+		        <a class="pagename" >HOME</a>
+		        <a >Normaler Eintrag</a>
+		        <div class="nav-drop">
+		          <a href="#0" class="nav-drop-btn">Drop-Eintrag&nbsp;&nbsp;</a>
+		          <div class="drop">
+		          <a href="#1">Drop Eintrag&nbsp;1</a>
+		          <a href="#2">Drop Eintrag&nbsp;2</a>
+		          </div>
+		        </div>
+		      <button class="btn btn-out btn-nav-close">×</button>
+		      </div>
+		    </nav>
+				<div class="marg5 pad3 bo bo-gr bo-rad5">
+					Hier wird zusätzlich zur Klasse <b>nav</b> die Klasse <b>nav-bk</b> verwendet.
+				</div>
+		  </div>
+		  <div class="col c4" style="min-height:200px">
+		    <h6><a name="H-Nav-B2">Beispiel Horizontale Navigation (nav nav-bl)</a></h6>
+		    <nav class="nav nav-bl" tabindex="-1">
+		      <div class="nav-cont" >
+		        <a class="pagename" >HOME</a>
+		        <a >Normaler Eintrag</a>
+		        <div class="nav-drop">
+		          <a href="#0" class="nav-drop-btn">Drop-Eintrag&nbsp;&nbsp;</a>
+		          <div class="drop">
+		          <a href="#1">Drop Eintrag&nbsp;1</a>
+		          <a href="#2">Drop Eintrag&nbsp;2</a>
+		          </div>
+		        </div>
+		      <button class="btn btn-out btn-nav-close">×</button>
+		      </div>
+		    </nav>
+				<div class="marg5 pad3 bo bo-gr bo-rad5">
+					Hier wird zusätzlich zur Klasse <b>nav</b> die Klasse <b>nav-bl</b> verwendet.
+				</div>
+		  </div>
+		</div>
+	</div>
+</section>
+<section class="sect" id="sectVmenu">
+	<div id="Menutest">
+		<h3 class="t-bk-lig"><a name="V-Div">Vertikales Menü</a></h3>
+		<div class="marg8 pad5 bo bo-gr bo-rad5">
+			<p>Eine vertikale Menüleiste besteht aus einem div-Tag und der Klasse <b>menu</b> und einer bestimmten Struktur (siehe&nbsp;Quelltext).
+				In dieser Struktur gibt es als ersten Knoten eine a-Tag mit der Klasse <b>drop</b> (zeigt den Pfeil zum ausklappen),
+				 mit dem über javascript die Liste mit der Klasse <b>menu-list</b> aufgeklappt und eingeklappt werden kann. Analog funkioniert das mit Untermenüs.
+				 Es gibt zusätzliche Klassen für Farben:
+				 <ul class="menu-list stripped">
+					 <li >Klasse <b>nav-bl</b>= blau</li>
+					 <li >Klasse <b>nav-rd</b>= rot</li>
+				 </ul>
+			</p>
+			<div >Quelltext-Beispiel:
+				<div class="pre c80p">&lt;div class="menu" &gt;
+					&nbsp;&nbsp;&lt;a class="drop" &gt;Seiten Menü&lt;/a&gt;
+					&nbsp;&nbsp;&lt;ul id="m1" class="menu-list smooth" &gt;
+					&nbsp;&nbsp; &nbsp;&nbsp;&lt;li&gt;&lt;a href="#m1"&gt;Punkt 1&lt;/a&gt;&lt;/li&gt;
+					&nbsp;&nbsp; &nbsp;&nbsp;&lt;li class="drop"&gt;
+					&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&lt;a class="drop" &gt;Unterpunkte&lt;/a&gt;
+					&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&lt;ul id="m2" class="menu-list smooth" &gt;
+					&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&lt;li&gt;&lt;a href="#_m1"&gt;Unterpunkt 1&lt;/a&gt;&lt;/li&gt;
+					&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&lt;li&gt;&lt;a href="#_m2"&gt;Unterpunkt 2&lt;/a&gt;&lt;/li&gt;
+					&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&lt;/ul&gt;
+					&nbsp;&nbsp; &nbsp;&nbsp;&lt;/li&gt;
+					&nbsp;&nbsp; &nbsp;&nbsp;&lt;li&gt;&lt;a href="#m3"&gt;Punkt 3&lt;/a&gt;&lt;/li&gt;
+					&nbsp;&nbsp;&lt;/ul&gt;
+					&lt;/div&gt;</div>
+			</div>
+			<div class="row">
+				<div class="col c3 colcustomsty">
+					<h6 class="marg3-b"><a name="V-Div-B">Beispiel vertikales Menü (menu)</a></h6>
+					<div class="menu" >
+					  <a class="drop" v-on:click="v_m1=!v_m1" >Seiten Menü</a>
+					  <ul id="m1" class="menu-list smooth" v-show="v_m1" v-on:click="v_m1=false">
+					    <li><a href="#m1">Punkt 1</a></li>
+					    <li class="drop">
+					    <a class="drop" v-on:mouseover="v_m2=true" >Unterpunkte</a>
+					    <ul id="m2" class="menu-list smooth" v-show="v_m2" v-on:click="v_m2=false">
+					      <li><a href="#_m1">Unterpunkt 1</a></li>
+					      <li><a href="#_m2">Unterpunkt 2</a></li>
+					    </ul>
+					    </li>
+					  </ul>
+					</div>
+				</div>
+				<div class="col c1">&nbsp;</div>
+				<div class="col c3 colcustomsty">
+					<h6 class="marg3-b"><a name="V-Div-B">Beispiel in rot (menu-rd)</a></h6>
+					<div class="menu menu-rd" >
+						<a class="drop" v-on:click="v_m1r=!v_m1r" >Seiten Menü</a>
+						<ul id="m1" class="menu-list smooth" v-show="v_m1r" v-on:click="v_m1r=false">
+							<li><a href="#m1">Punkt 1</a></li>
+							<li class="drop">
+							<a class="drop" v-on:mouseover="v_m2r=true" >Unterpunkte</a>
+							<ul id="m2" class="menu-list smooth" v-show="v_m2r" v-on:click="v_m2r=false">
+								<li><a href="#_m1">Unterpunkt 1</a></li>
+								<li><a href="#_m2">Unterpunkt 2</a></li>
+							</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="col c1">&nbsp;</div>
+				<div class="col c3 colcustomsty">
+					<h6 class="marg3-b"><a name="V-Div-B">Beispiel in blau (menu-bl)</a></h6>
+					<div class="menu menu-bl" >
+						<a class="drop" v-on:click="v_m1b=!v_m1b" >Seiten Menü</a>
+						<ul id="m1" class="menu-list smooth" v-show="v_m1b" v-on:click="v_m1b=false">
+							<li><a href="#m1">Punkt 1</a></li>
+							<li class="drop">
+							<a class="drop" v-on:mouseover="v_m2b=true" >Unterpunkte</a>
+							<ul id="m2" class="menu-list smooth" v-show="v_m2b" v-on:click="v_m2b=false">
+								<li><a href="#_m1">Unterpunkt 1</a></li>
+								<li><a href="#_m2">Unterpunkt 2</a></li>
+							</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="col c1">&nbsp;</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="sect" id="sectGrid">
+	<div id="Gridtest">
+		<h3 class="t-bk-lig"><a name="Grid">Grid</a></h3>
+		<div class="marg8 pad5 bo bo-gr bo-rad5">
+				<p>Grid bedeutet eine Aufteilung in Reihen (<em>row</em>) und Spalten (<em>col</em>).</p>
+				<p>DIV-Reihe mit Klasse row . Dann DIV-Spalten mit col und den Zusätzen c12, c11, c10....c1.</p>
+				<p>Insgesammt basiert das System auf 12 Spalte. Das heisst 12 <b>c1</b>-Container passen in eine Reihe. Bei <b>c4</b>-Containern können es nur 4 sein.</p>
+				<div >Quelltext-Beispiel:
+					<div class="pre c50p">&lt;div class="row" &gt;
+						&nbsp;&nbsp; &lt;div class="col c4" &gt;
+						&nbsp;&nbsp; &nbsp;&nbsp; &lt;div&gt; Schmale Spalte (Breite 4) &lt;/div&gt;
+						&nbsp;&nbsp; &lt;/div&gt;
+						&nbsp;&nbsp; &lt;div class="col c8" &gt;
+						&nbsp;&nbsp; &nbsp;&nbsp; &lt;div&gt; Breite Spalte (Breite 8) &lt;/div&gt;
+						&nbsp;&nbsp; &lt;/div&gt;
+						&lt;/div&gt;</div>
+				</div>
+		</div>
+		<div id="gridtest1" class="row" >
+			<div class="col c12">
+				<div class="marg0 pad3 bg-rd-drk" style="text-align:center"><b>c12</b> oder <b>c100p</b> komplette verfügbare Breite</div>
+			</div>
+		</div>
+		<div id="gridtest2" class="row" >
+			<div class="col c1">
+				<div class="marg0 pad3 bg-gr-lig"><b>c1</b></div>
+			</div>
+			<div class="col c11">
+				<div class="marg0 pad3 bg-gr-drk"><b>c11</b></div>
+			</div><br/>
+			<div class="col c2">
+				<div class="marg0 marg1-t pad3 bg-gr-lig"><b>c2</b></div>
+			</div>
+			<div class="col c10">
+				<div class="marg0 marg1-t pad3 bg-gr-drk"><b>c10</b></div>
+			</div><br/>
+			<div class="col c3">
+				<div class="marg0 marg1-t pad3 bg-gr-lig"><b>c3</b></div>
+			</div>
+			<div class="col c9">
+				<div class="marg0 marg1-t pad3 bg-gr-drk"><b>c9</b></div>
+			</div><br/>
+			<div class="col c4">
+				<div class="marg0 marg1-t pad3 bg-gr-lig"><b>c4</b></div>
+			</div>
+			<div class="col c8">
+				<div class="marg0 marg1-t pad3 bg-gr-drk"><b>c8</b></div>
+			</div><br/>
+			<div class="col c5">
+				<div class="marg0 marg1-t pad3 bg-gr-lig"><b>c5</b></div>
+			</div>
+			<div class="col c7">
+				<div class="marg0 marg1-t pad3 bg-gr-drk"><b>c7</b></div>
+			</div><br/>
+			<div class="col c6">
+				<div class="marg0 marg1-t pad3 bg-gr-lig"><b>c6</b></div>
+			</div>
+			<div class="col c6">
+				<div class="marg0 marg1-t pad3 bg-gr-drk"><b>c6</b></div>
+			</div>
+		</div>
+		<div id="gridtest3" class="row" >
+			<div class="col c1">
+				<div class="marg0 pad3 bg-bk-lig"><b>c1</b></div>
+			</div>
+			<div class="col c10" style="text-align:center">
+				<div class="marg0 pad3 bg-bk"><b>c10</b> mehrere Spalten<span style="margin-left:90px;">&nbsp;</span></div>
+			</div>
+			<div class="col c1">
+				<div class="marg0 pad3 bg-bk-lig"><b>c1</b></div>
+			</div>
+			<br/> <!-- #### next #### //-->
+			<div class="col c4">
+				<div class="marg0 marg1-t pad3 bg-gr-drk"><b>c4</b></div>
+			</div>
+			<div class="col c7">
+				<div class="marg0 marg1-t pad3 bg-bk-lig"><b>c7</b></div>
+			</div>
+			<div class="col c1">
+				<div class="marg0 marg1-t pad3 bg-gr-drk"><b>c1</b></div>
+			</div>
+			<br/><!-- #### next #### //-->
+			<div class="col c1">
+				<div class="marg0 marg1-t pad3 bg-gr"><b>c1</b></div>
+			</div>
+			<div class="col c1">
+				<div class="marg0 marg1-t pad3 bg-gr-drk"><b>c1</b></div>
+			</div>
+			<div class="col c1">
+				<div class="marg0 marg1-t pad3 bg-bk-lig"><b>c1</b></div>
+			</div>
+			<div class="col c1">
+				<div class="marg0 marg1-t pad3 bg-gr"><b>c1</b></div>
+			</div>
+			<div class="col c1">
+				<div class="marg0 marg1-t pad3 bg-gr-drk"><b>c1</b></div>
+			</div>
+			<div class="col c1">
+				<div class="marg0 marg1-t pad3 bg-bk-lig"><b>c1</b></div>
+			</div>
+			<div class="col c1">
+				<div class="marg0 marg1-t pad3 bg-gr"><b>c1</b></div>
+			</div>
+			<div class="col c1">
+				<div class="marg0 marg1-t pad3 bg-gr-drk"><b>c1</b></div>
+			</div>
+			<div class="col c1">
+				<div class="marg0 marg1-t pad3 bg-bk-lig"><b>c1</b></div>
+			</div>
+			<div class="col c1">
+				<div class="marg0 marg1-t pad3 bg-gr"><b>c1</b></div>
+			</div>
+			<div class="col c1">
+				<div class="marg0 marg1-t pad3 bg-gr-drk"><b>c1</b></div>
+			</div>
+			<div class="col c1">
+				<div class="marg0 marg1-t pad3 bg-bk-lig"><b>c1</b></div>
+			</div>
+		</div>
+		<div id="gridtest4" class="row" >
+			<div class="col c12">
+					<div class="row bg-gn-drk marg0 pad0-t pad3-l pad3-r pad3-b">
+						<div class="col c100p">
+				      <div class="marg0 marg1-t pad3" style="text-align:center"><b>c100p</b> mit Spalten in Spalten</div>
+				    </div>
+				  <br/><!-- #### next #### //-->
+				    <div class="col c75p">
+				      <div class="marg0 marg1-t pad3 bg-gr-drk"><b>c75p</b> 75% der Breite</div>
+				    </div>
+				    <div class="col c25p">
+				      <div class="marg0 marg1-t pad3 bg-bk-lig"><b>c25p</b> 25% der Breite</div>
+				    </div>
+				  <br/><!-- #### next #### //-->
+				    <div class="col c33p">
+				      <div class="marg0 marg1-t pad3 bg-gr-drk"><b>c33p</b> 33,33% der Breite</div>
+				    </div>
+				    <div class="col c33p">
+				      <div class="marg0 marg1-t pad3 bg-bk-lig"><b>c25p</b> 33,33% der Breite</div>
+				    </div>
+				    <div class="col c33p">
+				      <div class="marg0 marg1-t pad3 bg-gr-lig"><b>c25p</b> 33,33% der Breite</div>
+				    </div>
+						<br/><!-- #### next #### //-->
+					    <div class="col c33p">
+					      <div class="marg0 marg1-t pad3 bg-gr-drk"><b>c33p</b> 33,33% der Breite</div>
+					    </div>
+					    <div class="col c66p">
+					      <div class="marg0 marg1-t pad3 bg-bk-lig"><b>c25p</b> 66,66% der Breite</div>
+					    </div>
+				  </div>
+			</div>
+		</div>
+	</div>
+	<hr/>
+</section>
+<section class="sect" id="sectBut">
+	<h3 class="t-bk-lig"><a name="Links_a_Button">Links und Button</a></h3>
+	<div class="marg8 pad8 bo bo-gr bo-rad5">
+			Links (&lt;a&gt;) oder Buttons (&lt;button&gt; oder &lt;input&gt;) mit Klassen btn. Zusätzliche Klassen für Farben (z.B. bt-rd) oder/und für invertierte Typen (z.B. bt-rd-out).
+			<br/><br/>
+			<div >Quelltext-Beispiel:
+				<div class="pre c50p">&lt;a class="btn btn-gr"&gt;Grauer Button&lt;/a&gt;</div>
+			</div>
+	</div>
+	<div class="row" >
+		<div class="col c2">
+			<a class="btn">btn</a><br/>
+			<a class="btn btn-out">btn btn-out</a>
+		</div>
+		<div class="col c2">
+			<a class="btn btn-gr">btn btn-gr</a><br/>
+			<a class="btn btn-gr-out">btn btn-gr-out</a>
+		</div>
+		<div class="col c2">
+			<a class="btn btn-bl">btn-bl</a><br/>
+			<a class="btn btn-bl-out">btn btn-bl btn-out</a>
+		</div>
+		<div class="col c2">
+			<a class="btn btn-gn">btn-gn</a><br/>
+			<a class="btn btn-gn-out">btn btn-gn btn-out</a>
+		</div>
+		<div class="col c2">
+		<a class="btn btn-rd">btn-rd</a><br/>
+		<a class="btn btn-rd-out">btn btn-rd btn-out</a>
+		</div>
+		<div class="col c2">
+		<a class="btn btn-up">btn btn-up</a><br/>
+		<a class="btn btn-fow">btn btn-fow</a>
+		</div>
+	</div>
+	<hr/>
+</section>
+<section class="sect" id="sectForm">
+		<h3 class="t-bk-lig"><a name="Formularelemente">Formularelemente</a></h3>
+		<div class="pad3">
+		<fieldset>
+		<legend>1.Legende von Fieldset</legend>
+		<div class="pad8">
+			Formularelemente eingepackt in &lt;label&gt;-Tags. Um unterhalb des Feldes einen Zusatztext in klein anzuzeigen ein &lt;span&gt;-Element mit Klasse "label-h".
+			<br/><br/>
+			<div >Quelltext-Beispiel:
+				<div class="pre c50p">&lt;label for="id_textinput2" class="label"&gt;Textinput
+					&lt;input id="id_textinput2" type="text" class="smooth" placeholder="Textinput"&gt;
+					&lt;span class="label-h"&gt;Beschreibung für Label&lt;/span&gt;
+					&lt;/label&gt;</div>
+			</div>
+		</div>
+		<label for="id_textinput" class="label">Textinput
+		<input id="id_textinput" type="text" class="smooth" placeholder="Textinput" list="sostwas">
+			<datalist id="sostwas" >
+				<option value="Anderer Text">
+				<option value="Blöder Text">
+				<option value="Circus">
+				<option value="Noch irgend was">
+				<option value="Sostwas">
+				<option value="Bei jedem klugen Wort von Sokrates, rief Xanthippe zynisch: Quatsch!">
+				<option value="Yippee">
+				<option value="Zoo">
+			</datalist>
+		<span class="label-h">Beschreibung für Label mit label-h</span>
+		</label>
+		<label for="id_textinput2" class="label">Textinput
+		<input id="id_textinput2" type="text" class="smooth" placeholder="Textinput">
+		</label>
+		<label class="label">Test für label
+		<textarea rows="3" class="smooth">textarea</textarea>
+		</label>
+		<label class="label warn">Test Warn
+			<input type="number" value="1099"/>
+			<span class="label-h">Label-Klasse warn für rote Markierung</span>
+		</label>
+		</fieldset>
+		</div>
+		<div class="pad3">
+		<fieldset>
+		<legend>2.Legende von Fieldset</legend>
+		 <div class="row">
+		    <div class="col c3">
+					<strong>&nbsp;</strong><br/><!-- wird eingefügt damit alles auf gleicher Höhe ist //-->
+			    <span class="addon marg1-l">&#x20AC;</span><input id="addon" type="text" class="smooth" placeholder="einfaches Addon"/>
+		    </div>
+		    <div class="col c3">
+					<label for="addon" class="label" >AddOn<br/>
+				    <span class="addon">$</span><input id="addon" type="text" class="smooth inlblo" placeholder="...mit Label"/>
+			   </label>
+				</div>
+		    <div class="col c6">
+					<div class="marg8 pad8">Input-Feld mit vorrangestelltem Symbol wird erzeugt mit einem &lt;span&gt;-Tag und der Klasse "addon".
+						<br/><br/>
+							<div >Quelltext-Beispiel:
+							<div class="pre c75p">&lt;span class="addon"&gt;$&lt;/span&gt;&lt;input type="text" class="smooth" /&gt;</div>
+						</div>
+					</div>
+				</div>
+		 </div>
+		 <hr/>
+		 <div class="row">
+			 <div class="col c3">
+				 <label for="thefile" class="label">File<br/>
+					 <span class="addon">&#x27A1;</span><output id="xthefile" type="text" class="outp" style="min-width: 228px;">{{v_file}}</output>
+					 <input id="thefile" type="file" class="hidden" v-on:change="vm_test($event,'thefile')" />
+				 </label>
+			 <p></p>
+				 <label for="thefileto" class="label">File 2<br/>
+				 	<input id="thefileto" type="file" class="file" />
+				 </label>
+			 </div>
+			 <div class="col c9">
+				 <div class="marg8 pad8">
+					 Ein eigens gestaltetes Input-Feld (<i>Type=file</i>) für Dateiauswahl mit vorrangestelltem Symbol wird erzeugt mit einem &lt;span&gt;-Tag und der Klasse "addon".
+					 Darauf folgt eine &lt;output&gt;-Tag und der Klasse "outp" und dann das normale Input-Feld, welche mit der Klasse "hidden". Durch das umschliessende &lt;label&gt;-Tag, wird das Event auch auf das Outputelement ausgelöst.
+					 <br/><br/>
+						 <div >Quelltext-Beispiel:
+						 <div class="pre c75p">&lt;label for="thefile" class="label">File&lt;br/&gt;
+						 					 &lt;span class="addon"&gt;&#x27A1;&lt;/span&gt;&lt;output id="xthefile" type="text" class="outp" style="min-width: 228px;"&gt;{{v_file}}&lt;/output&gt;
+						 					 &lt;input id="thefile" type="file" class="hidden" v-on:change="vm_test($event,'thefile')" /&gt;
+						 				 &lt;/label&gt;</div>
+					 </div>
+				 </div>
+			 </div>
+		 </div>
+		 <hr class="hr"/>
+		 <div class="row">
+			 <div class="col c3">
+				 <div class="pad8"><a class="" href="#">Ein einfacher Link</a></div>
+				 <p></p>
+				 <div class="pad8"><span class="link" onClick="alert('Ist kein Link')" >Ein &#x3008;span&#x3009;-Element was wie ein Link aussieht</span></div>
+			 </div>
+			 <div class="col c9">
+				 <div class="pad4 pad8-l pad8-r marg0 marg8-l marg8-r">
+					 Ein einfacher Link wird ohne zusätzliche Klasse immer ohne Unterstreichung dargestellt. Ein beliebiges Element z.B. ein &lt;span&gt;-Tag kann mit der Klasse "link" wie ein solcher dargestellt werden.
+					 <p></p>
+					 <div >Quelltext-Beispiel:
+						 <div class="pre c75p">&lt;span class="link"&gt;Ein &#x3008;span&#x3009;-Element was wie ein Link aussieht&lt;/span&gt;</div>
+					 </div>
+				 </div>
+			 </div>
+		 </div>
+		</fieldset>
+		</div>
+		<div class="row pad3">
+			<fieldset>
+			<legend>3.Legende von Fieldset</legend>
+				<div class="row">
+					<div class="col c3 pad2">
+						<span class="sel-drop">
+							<label class="label label-sel">Test Dropdown</label><br/>
+							<select name="select" class="sel" size="1" v-model="v_out">
+								<option v-bind:value="1">Wert 1</option>
+								<option v-bind:value="2">Wert 2</option>
+								<option v-bind:value="3">Wert 3</option>
+								<option v-bind:value="4">Wert 4</option>
+								<optgroup label="Label Lorem">
+									<option v-bind:value="5">Lorem ipsum consetetur</option>
+									<option v-bind:value="6">Lorem ipsum dolor sit amet</option>
+								</optgroup>
+							</select>
+						</span>
+						<output class="outp" style="width:30px" >{{v_out}}</output>
+					</div>
+					<div class="col c9">
+						<div class="marg8 pad8">Dropdown-Liste, auch hierachisch. Das verwendete &#x3008;select&#x3009;-Element hat hier die Klasse "sel".
+							<br/><br/>
+							<div>Die Ausgabe der Werte erfolgt über das &#x3008;output&#x3009;-Element mit der Klasse "outp". Es lässt sich ebenso ein &#x3008;div&#x3009;-Element mit der gleichen Klasse verwenden. </div>
+						</div>
+					</div>
+			</div>
+			<div class="row">
+				<div class="col c4">
+					<meter id="m1" v-bind:value="v_meter" min="10" low="50" optimum="25" high="85" max="100"></meter>
+					<progress id="fortschritt" :value="v_meter" min="10" max="100" style="width:150px"></progress>
+					<span class="outp" style="width:30px" >{{v_meter}}</span>
+					<a class="btn btn-out back" v-on:click="()=>{if(v_meter>=20){v_meter=v_meter-10}}">[−10]</a>
+					<a class="btn btn-out next" v-on:click="()=>{if(v_meter<=99){v_meter=v_meter+10}}">[+10]</a>
+				</div>
+				<div class="col c8">
+						Standard-Elemente <span class="t-bl-drk">&#x3008;meter&#x3009;</span> und <span class="t-bl-drk">&#x3008;progress&#x3009;</span>, ohne Klasse.<br/>
+						Die beiden Button zum ändern der werte sind &#x3008;a&#x3009;-Elemente mit den Klassen "btn back" und "btn next", welche für die Pfeile sorgen.
+				</div>
+			</div>
+			</fieldset>
+		</div>
+		<div class="row pad3"><a name="two"></a>
+			<fieldset>
+			<legend>4.Legende von Fieldset</legend>
+				<div class="col c5">
+					<label class="radio bg-lig bg-gr-hover" for="radio1">
+						<input type="radio" name="radio" id="radio1" value="bg-lig bg-gr-hover" v-model="v_radio"/>
+						Radio Sender 1
+					</label>
+					<label class="radio bg-lig bg-bl-hover" for="radio2">
+						<input type="radio" name="radio" id="radio2" value="bg-lig bg-bl-hover" v-model="v_radio"/>
+						Radio Sender 2
+					</label>
+					<label class="radio bg-lig bg-rd-hover" for="radio3">
+						<input type="radio" name="radio" id="radio3" value="bg-lig bg-rd-hover" v-model="v_radio"/>
+						Radio Sender 3
+					</label>
+					<label class="radio bg-lig bg-gn-hover" for="radio4">
+						<input type="radio" name="radio" id="radio4" value="bg-lig bg-gn-hover" v-model="v_radio"/>
+						Radio Sender 4
+					</label>
+				</div>
+				<div class="col c2"><span class="outp" style="min-width:150px">{{v_radio}}</span></div>
+				<div class="col c5 bg-ye"><div class="pad2 marg1 marg3-t marg3-b bg-gr-lig bg-gn-hover">Radiobuttons mit hover-bedingten Background z.B. duch bg-gn-hover</div></div>
+			</fieldset>
+		</div>
+		<div class="row"><a name="three"></a>
+			<fieldset>
+			<legend>5.Legende von Fieldset</legend>
+				<div>
+					<label for="check1" class="check">
+						<input type="checkbox" name="check1" id="check1" value="Check1" />
+						Checkboxe One
+					</label>&nbsp;&nbsp;&nbsp;
+					<label for="check2" class="check">
+						<input type="checkbox" name="check1" id="check2" value="Check3" />
+						Checkbox Two
+					</label>&nbsp;&nbsp;&nbsp;
+					<label for="check3" class="check">
+						<input type="checkbox" name="check1" id="check3" value="Check3" />
+						Checkbox Three
+					</label>
+				</div>
+			</fieldset>
+		</div>
+</section>
+
+<section class="sect" id="sectColor">
+	<h3 class="t-bk-lig"><a name="Farben">Farben</a></h3>
+	<div class="marg8 pad8 bo bo-gr bo-rad5">
+		<div>
+			In mincc4mp werden 8 Farben verwendet (einschließlich Schwarz und Weiß). Zusätzlich gibt es drei Stufen "<i>normal</i>","<i>ligth</i>" und "<i>dark</i>".
+			Um Elemente einzufärben braucht nur eine Klasse angegeben werden. Diese wird aus einzelnen Kürzeln zusammengesetzt.
+			Als erstes das Kürzel für entweder Hintergrund (bg), Text (t) oder Umrandung (bo).
+			Für die Farbe gibt es immer ein entsprechendes Kürzel (z.B. -bk für schwarz), welches mit einem Minuszeichen angehägt wird.
+			Die Stufe wird mit ganz hinten angehängt (z.B. -drk)
+		</div><br/>
+		<div>
+			Mit einer ähnlich benannten Hover-Klasse werden die gleichen Effekte wie bei einem <a class="link" href="#Links_a_Button">Button</a> erzeugt.
+		</div><br/>
+		<div class="bo bo-rd bo-rad3 pad3">
+			<b>Hinweis zu Umrandungen</b><br/>
+			Eine farbige Umrandung setzt einen Rahmen vorraus. Hat das Element noch keinen Rand braucht es zusätzlich die einfache Klasse "bo" (bzw. bo2, bo3 oder bo4) welche einen Rahmen erzeugt.<br/>
+			Die Klassen "bo-rad0", "bo-rad3", "bo-rad5", "bo-rad7" und  "bo-rad11" erzeugen abgerundete Ecken.
+		</div>
+
+	</div>
+	<div class="row">
+		<div class="col c1">
+			<p class="marg1 pad3 ">«normal»</p>
+			<p class="marg1 pad3 ">«light»</p>
+			<p class="marg1 pad3 ">«dark»</p>
+			<p class="marg1 pad3 ">«hover&click»</p>
+		</div>
+		<div class="col c1">
+			<p class="marg1 pad3 bg-n">bg-n</p>
+			<p class="marg1 pad3 bg-n-lig">bg-n-lig</p>
+			<p class="marg1 pad3 bg-n-drk">bg-n-drk</p>
+			<p class="marg1 pad3 bg-n-hover">bg-n-hover</p>
+		</div>
+		<div class="col c1">
+			<p class="marg1 pad3 bg-bl">bg-bl</p>
+			<p class="marg1 pad3 bg-bl-lig">bg-bl-lig</p>
+			<p class="marg1 pad3 bg-bl-drk">bg-bl-drk</p>
+			<p class="marg1 pad3 bg-bl-hover">bg-bl-hover</p>
+		</div>
+		<div class="col c1">
+			<p class="marg1 pad3 bg-gn">bg-gn</p>
+			<p class="marg1 pad3 bg-gn-lig">bg-gn-lig</p>
+			<p class="marg1 pad3 bg-gn-drk">bg-gn-drk</p>
+			<p class="marg1 pad3 bg-gn-hover">bg-gn-hover</p>
+		</div>
+		<div class="col c1">
+			<p class="marg1 pad3 bg-rd">bg-rd</p>
+			<p class="marg1 pad3 bg-rd-lig">bg-rd-lig</p>
+			<p class="marg1 pad3 bg-rd-drk">bg-rd-drk</p>
+			<p class="marg1 pad3 bg-rd-hover">bg-rd-hover</p>
+		</div>
+		<div class="col c1">
+			<p class="marg1 pad3 bg-or">bg-or</p>
+			<p class="marg1 pad3">--</p>
+			<p class="marg1 pad3 bg-or-drk">bg-or-drk</p>
+			<p class="marg1 pad3 bg-or-hover">bg-or-hover</p>
+		</div>
+		<div class="col c1">
+			<p class="marg1 pad3 bg-ye">bg-ye</p>
+			<p class="marg1 pad3">--</p>
+			<p class="marg1 pad3 bg-ye-drk">bg-ye-drk</p>
+			<p class="marg1 pad3 bg-ye-hover">bg-ye-hover</p>
+		</div>
+		<div class="col c1">
+			<p class="marg1 pad3 bg-gr">bg-gr</p>
+			<p class="marg1 pad3 bg-gr-lig">bg-gr-lig</p>
+			<p class="marg1 pad3 bg-gr-drk">bg-gr-drk</p>
+			<p class="marg1 pad3 bg-gr-hover">bg-gr-hover</p>
+		</div>
+		<div class="col c1">
+			<p class="marg1 pad3 bg-whi">bg-wh</p>
+			<p class="marg1 pad3">--</p>
+			<p class="marg1 pad3">--</p>
+			<p class="marg1 pad3">--</p>
+		</div>
+		<div class="col c1">
+			<p class="marg1 pad3 bg-bk">bg-bk</p>
+			<p class="marg1 pad3 bg-bk-lig">bg-bk-lig</p>
+			<p class="marg1 pad3 bg-bk-drk">bg-bk-drk</p>
+			<p class="marg1 pad3 bg-bk-hover">bg-bk-hover</p>
+		</div>
+		<div class="col c2">
+			<p class="marg1 pad3 bo">&nbsp;</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col c1">
+			<p class="marg1 pad3 t-gr">«<b>Texte</b>»</p>
+			<p class="marg1 pad3 t-gr">«<b>Texte (drk)</b>»</p>
+			<p class="marg1 pad3 pad8-t pad8-b t-gr">«<b>Border</b>»</p>
+			<p class="marg1 pad3 pad8-t pad8-b t-gr">«<b>Border (drk)</b>»</p>
+		</div>
+		<div class="col c10p">
+			<p class="marg1 pad3 t-gr">Text t-gr</p>
+			<p class="marg1 pad3 t-gr-drk">Text t-gr-drk</p>
+			<p class="marg1 pad3"><input style="width:4em" type="erg" class="smooth bo-gr" placeholder="bo-gr" /></p>
+			<p class="marg1 pad3"><input style="width:5em" type="erg" size="9" class="smooth bo-gr-drk" placeholder="bo-gr-drk" /></p>
+		</div>
+		<div class="col c10p">
+			<p class="marg1 pad3 t-bl">Text t-bl</p>
+			<p class="marg1 pad3 t-bl-drk">Text t-bl-drk</p>
+			<p class="marg1 pad3"><input style="width:4em" type="erg" class="smooth bo-bl" placeholder="bo-bl" /></p>
+			<p class="marg1 pad3"><input style="width:5em" type="erg" size="9" class="smooth bo-bl-drk" placeholder="bo-bl-drk" /></p>
+		</div>
+		<div class="col c10p">
+			<p class="marg1 pad3 t-gn">Text t-gn</p>
+			<p class="marg1 pad3 t-gn-drk">Text t-gn-drk</p>
+			<p class="marg1 pad3"><input style="width:4em" type="erg" size="5" class="smooth bo-gn" placeholder="bo-gn" /></p>
+			<p class="marg1 pad3"><input style="width:5em" type="erg" size="9"  class="smooth bo-gn-drk" placeholder="bo-gn-drk" /></p>
+		</div>
+		<div class="col c10p">
+			<p class="marg1 pad3 t-rd">Text t-rd</p>
+			<p class="marg1 pad3 t-rd-drk">Text t-rd-drk</p>
+			<p class="marg1 pad3"><input style="width:4em" type="erg" size="5" class="smooth bo-rd" placeholder="bo-rd" /></p>
+			<p class="marg1 pad3"><input style="width:5em" type="erg" size="9" class="smooth bo-rd-drk" placeholder="bo-rd-drk" /></p>
+		</div>
+		<div class="col c10p">
+			<p class="marg1 pad3 t-or">Text t-or</p>
+			<p class="marg1 pad3 t-or-drk">Text t-or-drk</p>
+			<p class="marg1 pad3"><input style="width:4em" type="erg" size="5" class="smooth bo-or" placeholder="bo-or" /></p>
+			<p class="marg1 pad3"><input style="width:5em" type="erg" size="9" class="smooth bo-or-drk" placeholder="bo-or-drk" /></p>
+		</div>
+		<div class="col c10p">
+			<p class="marg1 pad3 t-ye">Text t-ye</p>
+			<p class="marg1 pad3 t-ye-drk">Text t-ye-drk</p>
+			<p class="marg1 pad3"><input style="width:4em" type="erg" size="5" class="smooth bo-ye " placeholder="bo-ye" /></p>
+			<p class="marg1 pad3"><input style="width:5em" type="erg" size="9" class="smooth bo-ye-drk" placeholder="bo-ye-drk" /></p>
+		</div>
+		<div class="col c25p">
+			<p class="marg1 pad3 t-gr"><strong>Ein Element mit mehreren oben genannten Klassen</strong></p>
+			<p class="marg1 pad4 bo3 bo-bl-drk bo-rad11 t-rd bg-gn-lig">bo3, bo-bl-drk, bo-rad11, t-rd, bg-gn-lig</p>
+		</div>
+	</div>
+
+</section>
+<section class="sect" id="sectTable">
+	<h3 class="t-bk-lig"><a name="Tabellen">Tabellen</a></h3>
+	<div class="row">
+	<div class="col c4 pad3">
+	<table class="table sort strip min200w">
+		<thead>
+			<tr>
+				<th class="c2 down">Kopf1 c2</th>
+				<th class="c4">Kopf2 c4</th>
+				<th class="c3">Kopf3 c3</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>1-1</td>
+				<td>Tabelle <i>table sort strip</i></td>
+				<td>Spalten mit <i>c2</i>,<i>c3</i> usw.</td>
+			</tr>
+			<tr>
+				<td>2-1</td>
+				<td>2-2</td>
+				<td>2-3</td>
+			</tr>
+			<tr>
+				<td>3-1</td>
+				<td>3-2</td>
+				<td>3-3</td>
+			</tr>
+			<tr>
+				<td>4-1</td>
+				<td>4-2</td>
+				<td>4-3</td>
+			</tr>
+		</tbody>
+	</table>
+	</div>
+	<div class="col c3 pad3">
+		<table class="table min200w">
+			<thead>
+				<tr>
+					<th class="">Kopf1</th>
+					<th class="">Kopf2</th>
+					<th class="">Kopf3</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1-1</td>
+					<td>1-2</td>
+					<td>1-3</td>
+				</tr>
+				<tr>
+					<td>2-1</td>
+					<td>2-2</td>
+					<td>2-3</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="col c2 pad3">
+		<table class="table blank min200w">
+			<thead>
+				<tr>
+					<th class="">Kopf1</th>
+					<th class="">Kopf2</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1-1</td>
+					<td>Tabelle <i>table blank</i></td>
+				</tr>
+				<tr>
+					<td>2-1</td>
+					<td>2-2</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="col c2 pad3">
+		<table class="table blank min200w">
+			<tbody>
+				<tr><td>ohne Kopf-</td></tr>
+				<tr><td>zeilen</td></tr>
+				<tr><td>1-2</td></tr>
+				<tr><td>1-3</td></tr>
+				<tr><td>1-4</td></tr>
+			</tbody>
+		</table>
+	</div>
+	</div>
+</section>
+<section id="sectCont" >
+	<h3 class="t-bk-lig"><a name="Container">Einfache Container</a></h3>
+	<div class="sect" >
+		<p class="marg6"><span class="h5">Section:</span> nur Text ein Container mit Klasse <i>sect</i></p>
+	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+	sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
+	ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
+	magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
+	sanctus dolor sit amet.
+
+	Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero
+	eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum
+	dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+	</div>
+	<div class="cont">
+		<p class="marg6"><span class="h5">Content:</span> nur Text ein Container mit Klasse <i>cont</i></p>
+	Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel
+	eum iriure dolor in hendrerit in vulputate velit esse molestie consequat.
+
+	Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor
+	sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim
+	ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
+
+	Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis.
+	</div>
+</section>
+<section class="sect" id="sectMessage">
+	<h3 class="t-bk-lig"><a name="Messageboxen">Meldungsboxen</a></h3>
+	<div class="marg8 pad8 bo bo-gr bo-rad5">
+			Für einblendbare Meldungen anstatt der einfachen javascript-Meldung, wie <em class="link" onclick="alert('Alarm!')">alert('Alarm!');</em> muss eine bestimmte HTML-Struktur erzeugt werden.
+			Beim Anklicken der Button, wird der benötigte Quelltext und die zu verwendeten Klassen angezeigt. Da es sich um normales HTML handelt, lassen sich beliebige Inhalte einbinden.<br/>
+			Die Funktionalität muss aber mit javascript zur Verfügung gestellt werden. Diese Seite verwendet <strong class="t-gn-drk">vue.js</strong>.
+			<p>Der unterschied zwischen <strong>modal</strong> und <strong>nicht-modal</strong> liegt an der Variablen <em class="t-gn">v_modal</em>,
+			 bzw. daran ob der DIV-Container mit der Klasse <strong>modal</strong> angezeigt wird oder nicht.
+		  </p>
+	</div>
+	<div class="row">
+		<div class="col c2"><a class="btn btn-bl" v-on:click="v_msb=true;v_modal=false">MS-Box</a></div>
+		<div class="col c2"><a class="btn btn-rd" v-on:click="v_msb=true;v_modal=true">MS-Box Modal</a></div>
+		<div class="col c2"><a class="btn" v-on:click="v_msb2=true;v_modal=false">MS-Box ohne Kopf</a></div>
+	</div>
+	<div class="msb" v-show="v_msb==true">
+		<div class="modal" v-if="v_modal==true">&nbsp;</div>
+		<div class="no-modal" v-if="v_modal!==true" v-on:click="v_msb=false">&nbsp;</div>
+		<div class="msb-box">
+			<div class="msb-h bg-rd-drk">
+				<span class="h5">Achtung die Meldung</span>
+				<a class="btn btn-rd btn-close" v-on:click="v_msb=false">x</a>
+			</div>
+			<div class="msb-c bg-wh">
+				Meldung modal oder nicht modal, Funktionalität nur mit javascript z.B. Vue.js
+<code><pre>&lt;div class="msb" v-show="v_msb==true"&gt;
+&nbsp; <strong v-if="v_modal==true" class="t-rd">&lt;div class="modal" v-if="v_modal==true">&nbsp;&lt;/div&gt;</strong><i v-if="v_modal==false" class="t-gn">&lt;!-- &lt;div class="modal" v-if="v_modal==true">&nbsp;&lt;/div&gt; //--&gt;</i>
+&nbsp; &lt;div class="no-modal" v-if="v_modal!==true" v-on:click="v_msb=false">&nbsp;&lt;/div&gt;
+&nbsp; &lt;div class="msb-box"&gt;
+&nbsp;&nbsp; &lt;div class="msb-h bg-rd-drk"&gt;
+&nbsp;&nbsp;&nbsp; &lt;span class="h5"&gt;
+&nbsp;&nbsp;&nbsp;&nbsp; «MELDUNG Überschrift»
+&nbsp;&nbsp;&nbsp; &lt;/span&gt;
+&nbsp;&nbsp;&nbsp; &lt;a class="btn btn-rd btn-close" v-on:click="v_msb=false"&gt;x&lt;/a&gt;
+&nbsp;&nbsp; &lt;/div&gt;
+&nbsp;&nbsp; &lt;div class="msb-c bg-wh"&gt;
+&nbsp;&nbsp;&nbsp; &lt;div&gt;
+&nbsp;&nbsp;&nbsp;&nbsp; «TEXT»
+&nbsp;&nbsp;&nbsp; &lt;/div&gt;
+&nbsp;&nbsp;&nbsp; &lt;div class="centr"&gt;
+&nbsp;&nbsp;&nbsp;&nbsp; &lt;a class="btn btn-gr-out" v-on:click="v_msb=false">close&lt;/a&gt;
+&nbsp;&nbsp;&nbsp; &lt;/div&gt;
+&nbsp;&nbsp; &lt;/div&gt;
+&nbsp; &lt;/div&gt;
+&lt;/div&gt;
+</pre></code>
+				<div class="centr"><a class="btn btn-gr-out" v-on:click="v_msb=false">close</a></div>
+			</div>
+		</div>
+	</div>
+	<div class="msb" v-show="v_msb2==true">
+	  <div class="no-modal" v-if="v_modal!==true" v-on:click="v_msb2=false">&nbsp;</div>
+	  <div class="msb-box">
+	    <div class="msb-c bg-n" >
+	      Meldung ohne Kopf
+<code><pre>&lt;div class="msb" v-show="v_msb2==true"&gt;
+&nbsp; &lt;div class="no-modal" v-if="v_modal!==true" v-on:click="v_msb2=false"&gt;&nbsp;&lt;/div&gt;
+&nbsp; &lt;div class="msb-box"&gt;
+&nbsp;&nbsp; &lt;div class="msb-c bg-n" &gt;
+&nbsp;&nbsp;&nbsp; &lt;div&gt;Meldung ohne Kopf
+&nbsp;&nbsp;&nbsp;&nbsp; «TEXT»
+&nbsp;&nbsp;&nbsp; &lt;/div&gt;
+&nbsp;&nbsp;&nbsp; &lt;div class="bg-n centr"&gt;
+&nbsp;&nbsp;&nbsp;&nbsp; &lt;a class="btn btn-bl-out" v-on:click="v_msb2=false"&gt;OK&lt;/a&gt;
+&nbsp;&nbsp;&nbsp; &lt;/div&gt;
+&nbsp;&nbsp; &lt;/div&gt;
+&nbsp; &lt;/div&gt;
+&lt;/div&gt;
+</pre></code>
+				<div class="bg-n centr"><a class="btn btn-bl-out" v-on:click="v_msb2=false">OK</a></div>
+	    </div>
+	  </div>
+	</div>
+</section>
+<section class="sect" id="sectMessage2">
+	<div class="marg8 pad8 bo bo-gr bo-rad5">
+		Einfache farbige und auffällige Banner können im Gegensatz zu den einblendbaren Meldungen mit "<em>normalen</em>" HTML-Elementen erzeugt werden.
+		Die Klasse dafür ist <strong>msg</strong>. Der innenabstand ist festgelegt. Der Abstand zu anderen Elementen muss mit der Eigenschaft <em>margin</em> oder Klassen wie z.B. <strong>marg3</strong> oder <strong>marg6</strong> erzeugt werden.
+		Hier sind alle möglichen Farb-Varianten dargestellt.
+	</div>
+	<div class="row">
+		<div class="col c3 msg marg6-r marg6-b min200w">
+			Messageboxen mit <i>msg</i> oder <i>msg-rd</i> für rot
+		</div>
+		<div class="col c3 msg msg-or marg6-r marg6-b min200w">
+			Messageboxen mit <i>msg</i> und z.B. <i>msg msg-or</i> für orange
+		</div>
+		<div class="col c3 msg msg-ye marg6-r marg6-b min200w">
+			Messageboxen mit <i>msg</i> und z.B. <i>msg msg-ye</i> für gelb
+		</div>
+	</div>
+	<div class="row">
+		<div class="col c3 msg msg-bl marg6-r marg6-b min200w">
+			Messageboxen mit <i>msg</i> und z.B. <i>msg msg-bl</i> für blau
+		</div>
+		<div class="col c3 msg msg-gn marg6-r marg6-b min200w">
+			Messageboxen mit <i>msg</i> und z.B. <i>msg msg-gn</i> für grün
+		</div>
+		<div class="col c3 msg msg-wh marg6-r marg6-b min200w">
+			Messageboxen mit <i>msg</i> und z.B. <i>msg msg-wh</i> für weiss&nbsp;(hell)
+		</div>
+	</div>
+</section>
+<section class="sect" id="sectTabs">
+	<h3 class="t-bk-lig"><a name="Tabs">Tabellenreiter (Tabs)</a></h3>
+	<div class="tabs-bl">
+		<div class="tab">
+			<a v-bind:class="{activ:v_tabs==1}" v-on:click="v_tabs=1">Tabs Info</a>
+			<a v-bind:class="{activ:v_tabs==2}" v-on:click="v_tabs=2">Quelltext für Tabs</a>
+			<a v-bind:class="{activ:v_tabs==3}" v-on:click="v_tabs=3">Vue.js</a>
+			<a v-bind:class="{activ:v_tabs==4}" v-on:click="v_tabs=4">Leerer Tab</a>
+		</div>
+		<label class="tab-label" v-bind:class="{activ:v_tabs==1}" v-on:click="v_tabs!==1?v_tabs=1:v_tabs=0"><a>Tabs Info</a></label>
+		<div class="tab-cont" v-bind:class="{activ:v_tabs==1}">
+			<h4>Tabs Info</h4>
+				Um Tabs darzustellen ist ein bestimmtes Konstrukt notwendig. In einem Container mit der Klasse <i>tabs</i> kommt als erstes ein DIV-Container mit der Klasse <i>tab</i>
+				mit A-Tags für die Tabreiter. Anschließend folgen DIV-Container mit der Klasse <i>tab-cont</i> für den Inhalt.<br/><br/>
+				Tabs sind aber unter einer bestimmten Breite nicht mehr praktikabel. Deshalb ist es ratsam vor jedem <i>tab-cont</i>-Container ein LABEL-Tag mit der Klasse <i>tab-label</i>,
+				 im LABEL ein A-Tag mit dem selben Text wie im zugehörigem Tabreiter. Die Labels werden erst ab einer Breite von unter 550px anstelle der Tabreiter eingeblendet.
+				Für die Wechsel-Aktion ist aber javascript notwendig, hier wird vue.js verwendet. Auch die Zuordnung der Tabreiter zum Content erfolgt nur über javascript.<br/><br/>
+				Farbe gibt es mit den Klassen <i class="t-bl">tabs-bl</i>(blau), <i class="t-rd">tabs-rd</i>(rot) und
+				<i class="t-gn">tabs-gn</i>(grün), die im übergeordneten Container die Klasse <i>tabs</i> ersetzen.
+				Es wird nur obere Rand des ausgewählten Tabreiters und der Schatten der Box eingefärbt.
+		</div>
+		<label class="tab-label" v-bind:class="{activ:v_tabs==2}" v-on:click="v_tabs!==2?v_tabs=2:v_tabs=0"><a>Quelltext für Tabs</a></label>
+		<div class="tab-cont" v-bind:class="{activ:v_tabs==2}">
+			<code>
+			<p class="t-gn">‹!-- javascript für vue.js //--›</p>
+			<p class="t-bl">
+				<i>‹script›<br/>
+				&nbsp;var id1 = new Vue({<br/>
+				&nbsp;&nbsp;el:'#id1',<br/>
+				&nbsp;&nbsp;data:{v_tabs:1}<br/>
+				&nbsp;});<br/>
+				‹/script/›</i>
+			</p>
+			<p class="t-gn">‹!-- HTML Ausschnitt //--›</p>
+			<p>
+			‹div id="id1" class="tabs"›<br/>
+				&nbsp;‹div class="tab"›<br/>
+					&nbsp;&nbsp;‹a <span class="t-bl">v-bind:class="{activ:v_tabs==1}" v-on:click="v_tabs=1"</span>›<b>Tab1</b>‹/a›<br/>
+					&nbsp;&nbsp;‹a <span class="t-bl">v-bind:class="{activ:v_tabs==2}" v-on:click="v_tabs=2"</span>›<b>Tab2</b>‹/a›<br/>
+				&nbsp;‹/div›<br/>
+				&nbsp;‹label class="tab-label" <span class="t-bl">v-on:click="v_tabs=1"</span>›‹a›<b>Label für Tab1</b>‹/a›‹/label›<br/>
+				&nbsp;‹div <span class="t-bl">v-bind:class="{activ:v_tabs==1}"</span>›<b>tabscont1 Inhalt</b>‹/div›<br/>
+				&nbsp;‹label class="tab-label" <span class="t-bl">v-on:click="v_tabs=2"</span>›‹a›<b>Label für Tab2</b>‹/a›‹/label›<br/>
+				&nbsp;‹div <span class="t-bl">v-bind:class="{activ:v_tabs==2}"</span>›<b>tabscont2 Inhalt</b>‹/div›<br/>
+			‹/div›
+			</p>
+			</code>
+		</div>
+		<label class="tab-label" v-bind:class="{activ:v_tabs==3}" v-on:click="v_tabs!==3?v_tabs=3:v_tabs=0"><a>Vue.js für Tabs</a></label>
+		<div class="tab-cont" v-bind:class="{activ:v_tabs==3}">
+			Diese Tabs erhalten ihre Funktionalität durch <b class="t-gn">Vue.js</b><br/>
+			Kann bezogen werden von <a href="https://vuejs.org" target="_blank">»https://vuejs.org/«</a>
+		</div>
+		<label class="tab-label" v-bind:class="{activ:v_tabs==4}" v-on:click="v_tabs!==4?v_tabs=4:v_tabs=0"><a>Tab leer</a></label>
+		<div class="tab-cont" v-bind:class="{activ:v_tabs==4}">
+
+		</div>
+	</div>
+</section>
+<section id="sectAcco" class="sect">
+	<h3 class="t-bk-lig"><a name="Acco">Akkordion Container</a></h3>
+	<div class="acco">
+		<div class="acco-label" v-bind:class="{activ:v_tabs==1}" v-on:click="v_tabs!==1 ?v_tabs=1:v_tabs=0"><a>Accordion Info</a></div>
+		<div class="acco-cont" v-bind:class="{activ:v_tabs==1}">
+			<h4>Accordion Info</h4>
+				Um ein Accordion darzustellen ist ein bestimmtes Konstrukt notwendig. Immer zwei aufeinander folgende DIV-Container gruppiert in einem Container mit der Klasse <i>acco</i>.
+				Der erste Container (für die Klickbereiche bzw. die Überschrift) muss die Klasse <i>acco-label</i> und der darauffolgende Container (für den Inhalt)
+				<i>acco-cont</i> mit einem Inhalts-Tag der in allen Boxen gleich breit ist z.B. ein &lt;P&gt;-Tag.<br/><br/>
+				Für die Wechsel-Aktion ist aber javascript notwendig, hier wird vue.js verwendet. Auch die Zuordnung des Klickbereich zum Content erfolgt nur über javascript.<br/><br/>
+				Farbe gibt es mit den Klassen <i class="t-bl">acco-bl</i>(blau), <i class="t-rd">acco-rd</i>(rot), <i class="t-or">acco-or</i>(orange), <i class="t-ye">acco-ye</i>(gelb) und
+				<i class="t-gn">acco-gn</i>(grün), die im übergeordneten Container die Klasse <i>acco</i> ersetzen.
+				Allerdings wird nur der Rand des ausgewählten Elements eingefärbt.
+		</div>
+		<div class="acco-label" v-bind:class="{activ:v_tabs==2}" v-on:click="v_tabs!==2?v_tabs=2:v_tabs=0"><a>Accordion Quelltext</a></div>
+		<div class="acco-cont" v-bind:class="{activ:v_tabs==2}">
+			<code>
+			<p class="t-gn">‹!-- javascript für vue.js //--›</p>
+			<p class="t-bl">
+				<i>‹script›<br/>
+				&nbsp;var id1 = new Vue({<br/>
+				&nbsp;&nbsp;el:'#id1',<br/>
+				&nbsp;&nbsp;data:{v_acco:1}<br/>
+				&nbsp;});<br/>
+				‹/script/›</i>
+			</p>
+			<p class="t-gn">‹!-- HTML Ausschnitt //--›</p>
+			<p >
+			‹div id="id1" class="acco"›<br/>
+				&nbsp;‹label class="acco-label" <span class="t-bl">v-on:click="v_acco=1"</span>›‹a›<b>Accordion1 Info</b>‹a›‹/label›<br/>
+				&nbsp;‹div class="acco-cont"  <span class="t-bl">v-bind:class="{activ:v_acco==1}"</span>›<b>Accordion1 Inhalt</b>‹/div›<br/>
+				&nbsp;‹label class="acco-label" <span class="t-bl">v-on:click="v_acco=2"</span>›‹a›<b>Accordion2 Info</b>‹a›‹/label›<br/>
+				&nbsp;‹div class="acco-cont"  <span class="t-bl">v-bind:class="{activ:v_acco==2}"</span>›<b>Accordion2 Inhalt</b>‹/div›<br/>
+			‹/div›
+			</p>
+			</code>
+		</div>
+		<div class="acco-label" v-bind:class="{activ:v_tabs==3}" v-on:click="v_tabs!==3?v_tabs=3:v_tabs=0"><a>Info Vue.js</a></div>
+		<div class="acco-cont" v-bind:class="{activ:v_tabs==3}">
+			Dieses Accordion erhält seine Funktionalität durch <b class="t-gn">Vue.js</b><br/>
+			Es kann bezogen werden von <a href="https://vuejs.org" target="_blank">»https://vuejs.org/«</a><br/>
+		</div>
+		<div class="acco-label" v-bind:class="{activ:v_tabs==4}" v-on:click="v_tabs!==4?v_tabs=4:v_tabs=0"><a>Info zu Auf- und Ab-Pfeilen</a></div>
+		<div class="acco-cont" v-bind:class="{activ:v_tabs==4}">
+			Die Pfeile, auf (&#x25B2;) und ab (&#x25BC;) links neben der Beschriftung werden nur durch CSS erzeugt (<i>::before</i>), wann welcher angezeigt wird ist von einer Klasse <i>activ</i> abhängig.
+			Diese muss aber auch mit javascript für das jeweilige Element erzeugt werden.
+		</div>
+	</div>
+</section>
+
+<section id="sect11" class="sect">
+<h3 class="t-bk-lig"><a name="Lists">Listen</a></h3>
+	<div class="row" >
+		<div class="col c2 min200w">
+			<h6>Liste normal <sup>(ohne Klasse)<sup></h6><br/>
+			<div class="bo bo-gr pad3">
+				<ul>
+					<li>Listeneintrag 1</li>
+					<li>Listeneintrag 2</li>
+					<li>Listeneintrag 3</li>
+					<li>Listeneintrag 4</li>
+				</ul>
+			</div>
+		</div>
+		<div class="col c1p">&nbsp;</div>
+		<div class="col c2 min200w">
+			<h6>Liste ohne Zeichen <br/>"no-list"</h6>
+			<div class="bo bo-gr pad3">
+				<ul class="no-list">
+					<li>Listeneintrag 1</li>
+					<li>Listeneintrag 2</li>
+					<li>Listeneintrag 3</li>
+					<li>Listeneintrag 4</li>
+				</ul>
+			</div>
+		</div>
+			<div class="col c1p">&nbsp;</div>
+		<div class="col c2 min200w">
+			<h6>Liste striped <br/>"no-list strip-list"</h6>
+			<div class="bo bo-gr pad3">
+				<ul class="no-list strip-list">
+					<li>Listeneintrag 1</li>
+					<li>Listeneintrag 2</li>
+					<li>Listeneintrag 3</li>
+					<li>Listeneintrag 4</li>
+				</ul>
+			</div>
+		</div>
+			<div class="col c1p">&nbsp;</div>
+		<div class="col c2 min200w">
+			<h6>Liste wie menü <br/>"menu-list"</h6>
+			<div class="bo bo-gr pad3">
+				<ul class="menu-list">
+					<li class=""><a>Listeneintrag 1</a></li>
+					<li>Listeneintrag 2</li>
+					<li>Listeneintrag 3</li>
+					<li>Listeneintrag 4</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+<div id="umsSectFoot">
+	<section id="sectFoot" class="sect">
+		<hr/>
+		<h3 class="t-bk-lig"><a name="Foot">Info zum Footer</a></h3>
+		<div class="row">
+			<div class="col c100">
+				<div class="marg8 pad5 bo bo-gr bo-rad5">
+					<p>Den Tag &lt;footer/&gt; mit Klasse <i class="t-gn-drk"><b>foot</b></i> anlegen. Feststehende Footer mit zusätzlicher Klasse <i>foot-fx</i><br/>
+				Im Footer könne andere Container eingesetzt werde z.B. <i>&lt;address/&gt;</i> allerdings ist die maximale Höhe bei einem feststehenden Footer auf <span class="t-bl">40px</span>
+				begrenzt, alles darüber hinaus wird ausgeblendet. Den Footer kan man mit einer Hintergrund-Klasse einfärben z.B.
+				<label for="class" class="label" >
+					<span class="addon">Farb Klasse</span><input id="class" type="text" class="smooth inlblo" size="5" v-model="v_class"/>
+			 </label>
+					</p>
+				<div >Quelltext-Beispiel:
+			    <div class="pre c80p">&lt;footer class="foot foot-fx bg-gr"&gt;
+					&nbsp;&nbsp;&lt;span class="h3"&gt;&lt;a href="#sectFoot" class="t-rd"&gt;FOOTER&lt;/a&gt;&lt;/span&gt;
+					&nbsp;&nbsp;&lt;address class="c5 inl"&gt;Name Vorname, Straße Nr, 0PLZ0 Ort&lt;/address&gt;
+					&nbsp;&nbsp;&lt;b&gt;&lt;a style="float:right;" class="btn btn-sm up" href="#" title="to top"&gt;&lt;/a&gt;&lt;/b&gt;
+					&lt;/footer&gt;</div>
+			  </div>
+			</div>
+		</div>
+	</section>
+	<pre></pre>
+	<footer v-bind:class="v_class" class="foot foot-fx">
+		<span class="h3"><a href="#sectFoot" v-bind:class="v_class2()">FOOTER</a></span>
+		<address class="c5 inl">Name Vorname, Straße Nr, 0PLZ0 Ort</address>
+		<b><a style="float:right;" class="btn btn-sm up" v-on:click="v_totop()" title="to top"></a></b>
+	</footer>
+</div>
+</body>
+<!-- Vue script //-->
+	<script typ="text/javascript" src="zumincss4mp.js"></script>
+</html>
