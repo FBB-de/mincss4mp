@@ -1,7 +1,7 @@
 /* 2019-2021 Frank Bruns-Ballhausen */
 /* Released under the GPL 2.0 License. */
 /* mini css for my poject (mincss4mp)*/
-x.version::after{content:"0.0.2 (gamma)"}
+x.version::after{content:"0.0.2 (delta)"}
 body,textarea,input,select{background-color:#fff0;border-radius:1px;font:16px sans-serif;margin:0}
 body{padding:0px 0px 0px 0px}
 .smooth,.smooth-enter,.smooth-enter-active,.smooth-leave,.smooth-leave-active{transition:all .3s ease-in-out}
@@ -194,6 +194,7 @@ table{margin:10px 5px 10px 5px;border-collapse:collapse}
 .msb>.msb-box{border:solid 1px #000000;margin:0 auto;overflow:hidden;position:relative;z-index:1001;box-shadow: 1px 4px 5px #0000005e}
 .msb>.msb-box>.msb-h{min-width:40vw;display:block;padding:0.50em 0.50em;position:relative;z-index:1001}
 .msb>.msb-box>.msb-c{min-width:40vw;min-height:100px;display:block;padding:0.50em 0.50em;position:relative;z-index:1001}
+.msb>.msb-box>.msb-c>div{white-space:pre-wrap;overflow:auto}
 
 hr{background-color:#ececec;border:none;display:block;height:2px;margin:1.5rem 0}
 .foot{position:relative;z-index:30;margin-top:40px;padding:6px 20px;bottom:0;left:0;right:0;}
